@@ -8,9 +8,9 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         
         def multiple_dfs (p, q):
-            if (not p) and (not q):
+            if not p and not q:
                 return True
-            elif (p and not q) or (q and not p) or p.val != q.val:
+            elif not p or not q or p.val != q.val:
                 return False
             return multiple_dfs(p.left, q.left) and multiple_dfs(p.right, q.right)
 
