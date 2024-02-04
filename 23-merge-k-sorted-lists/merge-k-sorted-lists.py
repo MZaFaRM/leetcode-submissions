@@ -10,7 +10,9 @@ class Solution:
                     min_index = i
             temp.next = lists[min_index]
             temp = temp.next
-            lists[min_index] = lists[min_index].next
-            
-            lists = [l for l in lists if l]
+            if lists[min_index].next:
+                lists[min_index] = lists[min_index].next
+            else:
+                lists.pop(min_index)
+
         return head.next
