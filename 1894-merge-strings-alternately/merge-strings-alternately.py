@@ -6,8 +6,14 @@ class Solution(object):
         :rtype: str
         """
         merged = ""
-        while word1 and word2:
-            merged += word1[0] + word2[0]
-            word1 = word1[1:]
-            word2 = word2[1:]
-        return merged + word1 + word2
+        i, j = 0, 0
+
+        while i < len(word1) and j < len(word2):
+            merged += word1[i] + word2[j]
+            i += 1
+            j += 1
+        if i < len(word1):
+            return merged + word1[i:]
+        elif j < len(word2):
+            return merged + word2[j:]
+        return merged
