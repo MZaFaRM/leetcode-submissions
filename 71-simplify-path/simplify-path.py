@@ -7,7 +7,7 @@ class Solution(object):
         stack = []
         dirs = path.split("/")
         for dr in dirs:
-            if dr and dr != ".":
+            if dr != '' and dr != ".":
                 if dr == "..":
                     if stack: stack.pop()
                 else:
