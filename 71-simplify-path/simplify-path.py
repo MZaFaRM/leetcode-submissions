@@ -6,13 +6,12 @@ class Solution(object):
         """
         stack = []
         dirs = path.split("/")
-        for dir in dirs:
-            if not dir or dir == ".":
-                continue
-            elif dir == "..":
-                if stack: stack.pop()
-            else:
-                stack.append(dir)
+        for dr in dirs:
+            if dr and dr != ".":
+                if dr == "..":
+                    if stack: stack.pop()
+                else:
+                    stack.append(dr)
 
         return "/" + "/".join(stack)
             
