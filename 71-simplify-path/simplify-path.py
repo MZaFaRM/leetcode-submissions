@@ -10,10 +10,7 @@ class Solution(object):
             if not dir or dir == ".":
                 continue
             elif dir == "..":
-                try:
-                    stack.pop()
-                except IndexError:
-                    pass
+                if stack: stack.pop()
             else:
                 stack.append(dir)
 
