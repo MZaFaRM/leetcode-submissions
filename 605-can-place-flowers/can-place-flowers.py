@@ -11,13 +11,10 @@ class Solution(object):
         while (i < bed_len) and (n > 0):
             if flowerbed[i] == 1:
                 i += 2
-                continue
             elif i > 0 and flowerbed[i-1] == 1:
                 i += 1
-                continue
             elif i + 1 < bed_len and flowerbed[i+1] == 1:
                 i += 1
-                continue
             else:
                 i += 2
                 n -= 1
