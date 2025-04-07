@@ -1,9 +1,10 @@
-class Solution(object):
-    def containsDuplicate(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
-        return len(nums) != len(set(nums))
-
-        
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hash_table = {}
+        for num in nums:
+            if hash_table.get(num, None):
+                return True
+            else:
+                hash_table[num] = 1
+        return False
+         
