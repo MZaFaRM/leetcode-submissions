@@ -1,6 +1,6 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hash_tables = {}
+        hash_map = {}
         for string in strs:
             hash_table = [0] * 26
             for letter in string:
@@ -10,9 +10,9 @@ class Solution:
                     hash_table[index] += 1
 
             hash_table = tuple(hash_table)
-            if hash_tables.get(hash_table, None) is None:
-                hash_tables[hash_table] = [string]
+            if hash_table not in hash_map:
+                hash_map[hash_table] = [string]
             else:
-                hash_tables[hash_table].append(string)
+                hash_map[hash_table].append(string)
 
-        return list(hash_tables.values())
+        return list(hash_map.values())
