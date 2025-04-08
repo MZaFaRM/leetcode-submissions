@@ -15,7 +15,6 @@ class Solution:
         output = []
         i = n-1
         while i >= 0:
-            print(i)
             if k == 0:
                 break
             elif not bucket[i]:
