@@ -23,6 +23,6 @@ class Solution:
                     column[j].add(val)
                     box[grp].add(val)
                 j += 1
-            i += 1
             j = 0
+            i += 1
         return True
