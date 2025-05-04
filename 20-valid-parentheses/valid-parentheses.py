@@ -1,17 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        v = {')': '(', '}': '{', ']':'['}
-        n = ""
-        for i in s:
-            if i in v.values():
-                n += i
-            elif i in v.keys():
-                try:
-                    if v[i] != n[-1]:
-                        return False
-                    n = n[:-1]
-                except IndexError:
+        stack = []
+        o = {"[", "{", "("}
+        for curr in s:
+            if curr in o:
+                stack.append(curr)
+            elif len(stack) <= 0:
+                return False
+            else:
+                last = stack.pop()
+                if (last == "[" and curr == "]") or (last == "(" and curr == ")") or (last == "{" and curr == "}"):
+                    pass
+                else:
                     return False
-        if n:
-            return False
-        return True
+        return not bool(stack)
