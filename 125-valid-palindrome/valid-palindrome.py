@@ -6,9 +6,9 @@ class Solution:
         while True:
             while i < len(s) and not s[i].isalnum():
                 i += 1
-            while k > 0 and not s[k].isalnum():
+            while k >= 0 and not s[k].isalnum():
                 k -= 1
-            if k < i:
+            if k <= i:
                 return True
             elif s[i] == s[k]:
                 i += 1
