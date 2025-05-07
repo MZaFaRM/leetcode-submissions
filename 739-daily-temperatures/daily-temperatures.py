@@ -6,11 +6,11 @@ class Solution(object):
         """
         stack = []
         result = [0] * len(temperatures)
-        for time, temp in enumerate(temperatures):
-            while stack and stack[-1][0] < temp:
-                point, index = stack.pop()
-                result[index] = time - index
-            stack.append((temp, time))
+        for curr_day, temp in enumerate(temperatures):
+            while stack and temperatures[stack[-1]] < temp:
+                temp_day = stack.pop()
+                result[temp_day] = curr_day - temp_day
+            stack.append(curr_day)
         return result
 
         
