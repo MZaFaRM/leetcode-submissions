@@ -5,30 +5,14 @@ class Solution(object):
         :rtype: List[str]
         """
         self.result = []
-        self.search = []
-        self.backtrack(n, n)
-        return ["".join(solution) for solution in self.result]
+        self.backtrack(n, n, "")
+        return self.result
 
-    def backtrack(self, left, right):
+    def backtrack(self, left, right, current):
         if right == 0:
-            self.result.append(self.search[:])
-
-        elif left == 0:
-            self.search.append(")")
-            self.backtrack(left, right - 1)
-            self.search.pop()
-
-        elif left == right:
-            self.search.append("(")
-            self.backtrack(left - 1, right)
-            self.search.pop()
-
-        elif left < right:
-            self.search.append("(")
-            self.backtrack(left - 1, right)
-            self.search.pop()
-            
-            self.search.append(")")
-            self.backtrack(left, right - 1)
-            self.search.pop()
-        
+            self.result.append(current)
+            return
+        if left > 0:
+            self.backtrack(left-1, right, current + "(")
+        if left < right:
+            self.backtrack(left, right-1, current + ")")
