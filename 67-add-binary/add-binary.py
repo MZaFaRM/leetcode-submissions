@@ -17,19 +17,17 @@ class Solution:
             if i >= m:
                 result = int(inp[i])
             result += int(out[i]) + carry
+            
+            if result >= 2:
+                carry = 1
+            else:
+                carry = 0
 
-            if result == 3:
-                carry = 1
+            if result % 2 != 0:
                 out[i] = "1"
-            elif result == 2:
-                carry = 1
+            else:
                 out[i] = "0"
-            elif result == 1:
-                carry = 0
-                out[i] = "1"
-            elif result == 0:
-                carry = 0
-                out[i] = "0"
+
             i -= 1
         out = "".join(out)
         if carry:
