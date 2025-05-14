@@ -2,10 +2,15 @@ from math import ceil
 
 class Solution:
     def mySqrt(self, x: int) -> int:
-        i = 0
-        for i in range(0, ceil(x / 2) + 1):
-            if i * i == x:
-                return i
-            elif i * i > x:
-                return i - 1
-        return i
+        low = 0
+        high = ceil(x / 2)
+        while low <= high:
+            mid = (high + low) // 2
+            val = mid * mid
+            if val == x:
+                return mid
+            elif val < x:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return low - 1
