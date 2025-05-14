@@ -2,10 +2,10 @@ class Solution:
     def addBinary(self, a: str, b: str) -> str:
         if len(a) > len(b):
             out = list(a)
-            inp = list(b)
+            inp = b
         else:
             out = list(b)
-            inp = list(a)
+            inp = a
 
         i = -1
         carry = 0
@@ -13,24 +13,11 @@ class Solution:
         m = -len(inp)
 
         while i >= n:
-            result = 0
-            if i >= m:
-                result = int(inp[i])
+            result = int(inp[i]) if i >= m else 0
             result += int(out[i]) + carry
-            
-            if result >= 2:
-                carry = 1
-            else:
-                carry = 0
-
-            if result % 2 != 0:
-                out[i] = "1"
-            else:
-                out[i] = "0"
-
+            carry = result >= 2
+            out[i] = str(int(result % 2 != 0))
             i -= 1
+
         out = "".join(out)
-        if carry:
-            return "1" + out
-        else:
-            return out
+        return "1" + out if carry else out
