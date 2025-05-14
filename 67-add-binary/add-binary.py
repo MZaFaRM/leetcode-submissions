@@ -19,8 +19,10 @@ class Solution:
             result += int(out[i]) + carry
             
             carry = result >= 2
-            out[i] = str(int(result % 2 != 0))
-
+            if result % 2 != 0:
+                out[i] = "1"
+            else:
+                out[i] = "0"
             i -= 1
         out = "".join(out)
         if carry:
