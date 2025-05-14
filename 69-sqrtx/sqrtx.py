@@ -1,9 +1,10 @@
-from math import ceil
-
 class Solution:
     def mySqrt(self, x: int) -> int:
         low = 0
-        high = ceil(x / 2)
+        if x < 2:
+            return x
+             
+        high = x // 2 
         while low <= high:
             mid = (high + low) // 2
             val = mid * mid
