@@ -8,7 +8,10 @@ class Solution:
             last = digits.pop()
             last += 1
         if last >= 10:
-            digits.extend([1] + ([0]*(zeroes+1)))
+            digits.append(1)
+            zeroes += 1
         else:
-            digits.extend([last] + ([0]*(zeroes)))
+            digits.append(last)
+
+        digits.extend([0] * zeroes)
         return digits
