@@ -13,11 +13,17 @@ class Solution:
         m = -len(inp)
 
         while i >= n:
-            result = int(inp[i]) if i >= m else 0
+            result = 0
+            if i >= m:
+                result = int(inp[i])
             result += int(out[i]) + carry
+            
             carry = result >= 2
             out[i] = str(int(result % 2 != 0))
-            i -= 1
 
+            i -= 1
         out = "".join(out)
-        return "1" + out if carry else out
+        if carry:
+            return "1" + out
+        else:
+            return out
