@@ -13,19 +13,15 @@ class Solution:
             length = len_stack.pop()
             lengths[length] = n - length[0]
 
-        for i, value in enumerate(reversed(heights)):
+        for i in range(n -1, -1, -1):
+            value = heights[i]
             while len_stack and len_stack[-1][1] > value:
                 length = len_stack.pop()
-                index = n - length[0] - 1, length[1]
-                lengths[index] = (lengths[index] + (i - length[0] - 1)) * length[1]
+                lengths[length] = (lengths[length] + (length[0] - i - 1)) * length[1]
             len_stack.append((i, value))
         
-        n = len(heights)
         while len_stack:
             length = len_stack.pop()
-            index = n - length[0] - 1, length[1]
-            lengths[index] = (lengths[index] + (n - length[0] - 1)) * length[1]
-
+            lengths[length] = (lengths[length] + length[0]) * length[1]
+        
         return max(lengths.values())
-
-
